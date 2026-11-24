@@ -4,527 +4,592 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Sanket J. Jagtap | Cybersecurity Researcher</title>
+
+<meta name="description" content="Official portfolio of Sanket J. Jagtap, independent cybersecurity researcher and security analyst.">
 
 <style>
 :root {
-  --green:#00ff91;
-  --dark:#020805;
-  --panel:#07140c;
-  --border:#12482c;
-  --muted:#a1b8a8;
+  --bg: #080b0e;
+  --surface: #10161b;
+  --surface2: #151d22;
+  --green: #36c990;
+  --white: #edf3f0;
+  --muted: #929f9a;
+  --border: #26342f;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
-
-html{scroll-behavior:smooth}
-
-body{
-  background:var(--dark);
-  color:#eafff1;
-  font-family:Consolas,monospace;
-  overflow-x:hidden;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#matrix{
-  position:fixed;
-  inset:0;
-  width:100%;
-  height:100%;
-  z-index:-2;
-  opacity:.19;
-  pointer-events:none;
+html {
+  scroll-behavior: smooth;
 }
 
-@keyframes scan{
-  to{top:100vh}
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: "Segoe UI", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* MATRIX BACKGROUND */
+
+#matrix {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  opacity: .12;
+  pointer-events: none;
 }
 
 /* NAVIGATION */
 
-header{
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:rgba(2,8,5,.94);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
-  padding:18px 7%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  flex-wrap:wrap;
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 20px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(8,11,14,.94);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(15px);
+  flex-wrap: wrap;
+  gap: 18px;
 }
 
-.logo{
-  color:var(--green);
-  font-size:23px;
-  font-weight:bold;
-  letter-spacing:3px;
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 2px;
 }
 
-nav{
-  display:flex;
-  flex-wrap:wrap;
-  gap:22px;
+.logo span {
+  color: var(--green);
 }
 
-nav a{
-  text-decoration:none;
-  color:#c6d8cc;
-  font-size:12px;
-  transition:.3s;
+nav {
+  display: flex;
+  gap: 27px;
+  flex-wrap: wrap;
 }
 
-nav a:hover{color:var(--green)}
+nav a {
+  color: #bdc9c3;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  transition: .3s;
+}
+
+nav a:hover {
+  color: var(--green);
+}
 
 /* HERO */
 
-.hero{
-  min-height:620px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;
-  padding:65px 7%;
-  gap:20px;
-  background:radial-gradient(
-    ellipse at 75% 50%,
-    #06391d 0%,
-    transparent 60%
-  );
-  border-bottom:1px solid var(--border);
+.hero {
+  min-height: 650px;
+  padding: 65px 7%;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 25px;
+  background:
+    radial-gradient(
+      ellipse at 78% 50%,
+      rgba(31,103,76,.15),
+      transparent 55%
+    );
+  border-bottom: 1px solid var(--border);
 }
 
-.terminal{
-  color:var(--green);
-  margin-bottom:22px;
-  font-size:14px;
+.terminal {
+  color: var(--green);
+  font-family: Consolas, monospace;
+  font-size: 14px;
+  margin-bottom: 22px;
 }
 
-.hero h1{
-  font-size:clamp(45px,7vw,85px);
-  line-height:1.15;
-  margin-bottom:20px;
-  letter-spacing:3px;
+.hero h1 {
+  font-size: clamp(48px, 7vw, 86px);
+  line-height: 1.13;
+  letter-spacing: 3px;
+  margin-bottom: 22px;
 }
 
-.hero h1 span{color:var(--green)}
-
-.subtitle{
-  color:#c0d2c5;
-  max-width:600px;
-  line-height:1.8;
-  font-size:15px;
+.hero h1 span {
+  color: var(--green);
 }
 
-.typing{
-  color:var(--green);
-  margin-top:22px;
-  min-height:28px;
+.subtitle {
+  max-width: 570px;
+  color: #aebbb5;
+  line-height: 1.9;
+  font-size: 15px;
 }
 
-.cursor{animation:blink .7s infinite}
-
-@keyframes blink{
-  50%{opacity:0}
+.typing {
+  margin-top: 23px;
+  color: var(--green);
+  font-family: Consolas, monospace;
+  min-height: 25px;
+  font-size: 14px;
 }
 
-.buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-  margin-top:30px;
+.cursor {
+  animation: blink .8s infinite;
 }
 
-.btn{
-  padding:12px 20px;
-  border:1px solid var(--green);
-  color:var(--green);
-  text-decoration:none;
-  font-size:12px;
-  transition:.3s;
+@keyframes blink {
+  50% { opacity: 0; }
 }
 
-.btn:hover{
-  color:#000;
-  background:var(--green);
-  box-shadow:0 0 20px #00ff9177;
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 30px;
 }
 
-/* HOLOGRAPHIC ROTATING HEAD */
-
-.head-scene{
-  width:100%;
-  height:460px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  perspective:1100px;
-  position:relative;
+.btn {
+  padding: 13px 19px;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border: 1px solid var(--green);
+  color: var(--green);
+  transition: .3s;
 }
 
-.head-scene::before{
-  content:"";
-  position:absolute;
-  width:330px;
-  height:330px;
-  border:1px solid #00ff9144;
-  border-radius:50%;
-  box-shadow:
-    0 0 35px #00ff9122,
-    inset 0 0 35px #00ff9122;
-  animation:ringRotate 12s linear infinite;
+.btn:hover {
+  background: var(--green);
+  color: #07110d;
 }
 
-.head-scene::after{
-  content:"";
-  position:absolute;
-  width:390px;
-  height:145px;
-  border:2px solid #00ff9177;
-  border-radius:50%;
-  transform:rotate(-20deg);
-  box-shadow:0 0 20px #00ff9166;
-  animation:ringPulse 4s ease-in-out infinite;
+/* ROTATING HOLOGRAPHIC HEAD */
+
+.head-scene {
+  height: 470px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1100px;
 }
 
-@keyframes ringRotate{
-  to{transform:rotate(360deg)}
+.orbit {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border: 1px solid rgba(54,201,144,.25);
+  border-radius: 50%;
+  animation: orbit 18s linear infinite;
 }
 
-@keyframes ringPulse{
-  50%{transform:rotate(20deg) scale(1.08);opacity:.35}
+.orbit.two {
+  width: 390px;
+  height: 145px;
+  border-color: rgba(54,201,144,.4);
+  transform: rotate(-25deg);
+  animation: orbit2 12s linear infinite;
 }
 
-.head-rotator{
-  width:290px;
-  height:360px;
-  position:relative;
-  z-index:3;
-  transform-style:preserve-3d;
-  animation:headSpin 10s ease-in-out infinite;
-  filter:drop-shadow(0 0 15px #00ff91);
+.orbit.three {
+  width: 275px;
+  height: 275px;
+  border-style: dashed;
+  border-color: rgba(54,201,144,.12);
+  animation-direction: reverse;
 }
 
-@keyframes headSpin{
-  0%{transform:rotateY(-25deg) rotateX(-3deg)}
-  50%{transform:rotateY(25deg) rotateX(3deg)}
-  100%{transform:rotateY(-25deg) rotateX(-3deg)}
+@keyframes orbit {
+  to { transform: rotate(360deg); }
 }
 
-.head-svg{
-  width:100%;
-  height:100%;
-  overflow:visible;
+@keyframes orbit2 {
+  to { transform: rotate(335deg); }
 }
 
-.head-outline{
-  fill:#052719;
-  fill-opacity:.45;
-  stroke:#00ff91;
-  stroke-width:2;
+.head {
+  width: 280px;
+  height: 360px;
+  position: relative;
+  z-index: 3;
+  transform-style: preserve-3d;
+  animation: headRotate 9s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(54,201,144,.2));
 }
 
-.mesh{
-  fill:none;
-  stroke:#00ff91;
-  stroke-width:1;
-  opacity:.65;
+@keyframes headRotate {
+  0% {
+    transform: rotateY(-28deg) rotateX(-2deg);
+  }
+  50% {
+    transform: rotateY(28deg) rotateX(3deg);
+  }
+  100% {
+    transform: rotateY(-28deg) rotateX(-2deg);
+  }
 }
 
-.mesh-bright{
-  fill:none;
-  stroke:#8affc1;
-  stroke-width:1.5;
-  opacity:.9;
+.head svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }
 
-.face-detail{
-  fill:none;
-  stroke:#00ff91;
-  stroke-width:2;
+.head-shape {
+  fill: #10291f;
+  fill-opacity: .8;
+  stroke: #36c990;
+  stroke-width: 2;
 }
 
-.eye{
-  fill:#00ff91;
-  filter:drop-shadow(0 0 7px #00ff91);
+.mesh {
+  fill: none;
+  stroke: #36c990;
+  stroke-width: 1;
+  opacity: .5;
 }
 
-.head-pulse{
-  animation:headGlow 2s ease-in-out infinite;
+.details {
+  fill: none;
+  stroke: #70dfb0;
+  stroke-width: 1.7;
 }
 
-@keyframes headGlow{
-  50%{opacity:.45}
+.eye {
+  fill: #70dfb0;
+  filter: drop-shadow(0 0 5px #36c990);
 }
 
-.head-label{
-  position:absolute;
-  bottom:15px;
-  color:var(--green);
-  font-size:10px;
-  letter-spacing:3px;
-  text-align:center;
-  width:100%;
-  z-index:5;
+.head-caption {
+  position: absolute;
+  bottom: 15px;
+  text-align: center;
+  width: 100%;
+  font-family: Consolas, monospace;
+  font-size: 10px;
+  color: #7eab96;
+  letter-spacing: 3px;
 }
 
 /* SECTIONS */
 
-section{padding:80px 8%}
-
-.section-label{
-  color:var(--green);
-  font-size:12px;
-  letter-spacing:3px;
-  margin-bottom:12px;
+section {
+  padding: 85px 8%;
 }
 
-h2{
-  font-size:clamp(28px,4vw,40px);
-  margin-bottom:28px;
+.section-label {
+  font-family: Consolas, monospace;
+  font-size: 12px;
+  color: var(--green);
+  letter-spacing: 3px;
+  margin-bottom: 15px;
 }
 
-h2 span{color:var(--green)}
-
-.about{
-  background:rgba(5,15,9,.93);
+h2 {
+  font-size: clamp(29px, 4vw, 41px);
+  margin-bottom: 30px;
 }
 
-.about-text{
-  color:var(--muted);
-  line-height:2;
-  max-width:900px;
-  font-size:14px;
+h2 span {
+  color: var(--green);
 }
 
-.stats{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:18px;
-  margin-top:35px;
+/* ABOUT */
+
+.about {
+  background: rgba(13,19,22,.95);
 }
 
-.stat{
-  text-align:center;
-  padding:23px;
-  background:var(--panel);
-  border:1px solid var(--border);
+.about-text {
+  max-width: 900px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 2;
 }
 
-.stat strong{
-  display:block;
-  font-size:25px;
-  color:var(--green);
+.stats {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+  gap: 18px;
 }
 
-.stat small{color:var(--muted)}
+.stat {
+  padding: 25px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.stat strong {
+  display: block;
+  color: var(--green);
+  font-size: 24px;
+  margin-bottom: 9px;
+}
+
+.stat small {
+  color: var(--muted);
+}
 
 /* ORGANISATION SLIDER */
 
-.recognition-strip{
-  padding:30px 0;
-  background:#06100a;
-  overflow:hidden;
-  border-top:1px solid var(--green);
-  border-bottom:1px solid var(--green);
+.recognition-strip {
+  padding: 35px 0;
+  background: #0c1215;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
 }
 
-.strip-title{
-  text-align:center;
-  color:var(--green);
-  font-size:12px;
-  letter-spacing:3px;
-  margin-bottom:25px;
+.strip-title {
+  text-align: center;
+  font-family: Consolas, monospace;
+  font-size: 12px;
+  color: #aab9b1;
+  letter-spacing: 3px;
+  margin-bottom: 28px;
 }
 
-.marquee{
-  display:flex;
-  width:max-content;
-  animation:slide 28s linear infinite;
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: slide 32s linear infinite;
 }
 
-.marquee:hover{animation-play-state:paused}
-
-.marquee-group{
-  display:flex;
-  gap:65px;
-  padding-right:65px;
-  align-items:center;
+.marquee:hover {
+  animation-play-state: paused;
 }
 
-.org{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-size:18px;
-  font-weight:bold;
-  white-space:nowrap;
+.marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 75px;
+  padding-right: 75px;
 }
 
-.org img{
-  width:42px;
-  height:42px;
-  background:white;
-  border-radius:5px;
-  padding:5px;
-  object-fit:contain;
+.org {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  white-space: nowrap;
+  color: #d8e2dc;
+  font-weight: 600;
+  font-size: 16px;
 }
 
-@keyframes slide{
-  to{transform:translateX(-50%)}
+.org img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  background: white;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+@keyframes slide {
+  to { transform: translateX(-50%); }
 }
 
 /* APPRECIATION CARDS */
 
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:22px;
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(245px,1fr));
+  gap: 22px;
 }
 
-.card{
-  padding:25px;
-  background:var(--panel);
-  border:1px solid var(--border);
-  transition:.3s;
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 26px;
+  transition: .3s;
 }
 
-.card:hover{
-  transform:translateY(-7px);
-  border-color:var(--green);
-  box-shadow:0 0 25px #00ff9122;
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--green);
+  background: var(--surface2);
 }
 
-.card-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:20px;
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 23px;
 }
 
-.card-top img{
-  width:52px;
-  height:52px;
-  padding:5px;
-  object-fit:contain;
-  background:white;
-  border-radius:5px;
+.card-top img {
+  width: 50px;
+  height: 50px;
+  background: white;
+  padding: 5px;
+  border-radius: 6px;
+  object-fit: contain;
 }
 
-.tag{
-  color:var(--green);
-  border:1px solid var(--border);
-  padding:5px 8px;
-  font-size:10px;
+.tag {
+  color: var(--green);
+  border: 1px solid var(--border);
+  padding: 6px 9px;
+  font-size: 10px;
 }
 
-.card h3{font-size:19px}
-
-.country{
-  color:var(--green);
-  font-size:11px;
-  margin:7px 0 15px;
+.card h3 {
+  font-size: 20px;
 }
 
-.card p{
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.8;
+.country {
+  color: var(--green);
+  font-size: 11px;
+  margin: 9px 0 17px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
 }
 
 /* SKILLS */
 
-.research{background:#050f09}
-
-.skills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
+.research {
+  background: #0d1418;
 }
 
-.skill{
-  padding:12px 18px;
-  color:var(--green);
-  border:1px solid var(--border);
-  background:var(--panel);
-  font-size:13px;
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
 }
 
-.skill:hover{
-  border-color:var(--green);
-  box-shadow:0 0 15px #00ff9133;
+.skill {
+  padding: 13px 18px;
+  background: var(--surface);
+  color: #c6d4cd;
+  border: 1px solid var(--border);
+  font-size: 13px;
+  transition: .3s;
+}
+
+.skill:hover {
+  color: var(--green);
+  border-color: var(--green);
 }
 
 /* CONTACT */
 
-.contact{
-  text-align:center;
-  background:radial-gradient(ellipse at center,#10391e,#020805 70%);
+.contact {
+  text-align: center;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(31,103,76,.13),
+      transparent 65%
+    );
 }
 
-.contact p{
-  color:var(--muted);
+.contact p {
+  color: var(--muted);
+  line-height: 2;
+}
+
+.contact .buttons {
+  justify-content: center;
 }
 
 /* FOOTER */
 
-footer{
-  padding:30px;
-  text-align:center;
-  border-top:1px solid var(--border);
-  color:var(--muted);
-  font-size:12px;
-  line-height:2;
+footer {
+  padding: 32px 15px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2.2;
 }
 
-.green{color:var(--green)}
+footer span {
+  color: var(--green);
+}
 
 /* MOBILE */
 
-@media(max-width:850px){
-
-  header{justify-content:center}
-
-  nav{justify-content:center}
-
-  .hero{
-    grid-template-columns:1fr;
-    text-align:center;
+@media(max-width:850px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
   }
 
-  .hero-content{order:1}
-
-  .head-scene{
-    order:2;
-    height:400px;
+  .subtitle {
+    margin: auto;
   }
 
-  .buttons{justify-content:center}
-
-  .head-scene::before{
-    width:280px;
-    height:280px;
+  .buttons {
+    justify-content: center;
   }
 
-  .head-scene::after{width:320px}
+  .head-scene {
+    height: 420px;
+  }
 
+  header {
+    justify-content: center;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 16px;
+  }
 }
 
-@media(max-width:480px){
-
-  nav{gap:12px}
-
-  nav a{font-size:10px}
-
-  .head-rotator{
-    width:250px;
-    height:320px;
+@media(max-width:480px) {
+  .hero {
+    padding: 55px 5%;
   }
 
-  section{padding:60px 6%}
+  .head {
+    width: 240px;
+    height: 320px;
+  }
 
+  .orbit {
+    width: 280px;
+    height: 280px;
+  }
+
+  .orbit.two {
+    width: 310px;
+    height: 120px;
+  }
+
+  section {
+    padding: 65px 6%;
+  }
+
+  nav a {
+    font-size: 10px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
 }
 </style>
 </head>
@@ -533,6 +598,7 @@ footer{
 
 <canvas id="matrix"></canvas>
 
+<!-- NAVIGATION -->
 
 <header>
   <div class="logo">SJJ<span>_SEC</span></div>
@@ -546,11 +612,11 @@ footer{
   </nav>
 </header>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 
 <div class="hero" id="home">
 
-  <div class="hero-content">
+  <div>
 
     <div class="terminal">
       root@researcher:~# whoami
@@ -568,32 +634,33 @@ footer{
     </p>
 
     <div class="typing">
-      <span id="typed"></span>
-      <span class="cursor">_</span>
+      <span id="typed"></span><span class="cursor">_</span>
     </div>
 
     <div class="buttons">
-      <a class="btn" href="#recognition">
-        EXPLORE MY RECOGNITION →
+      <a href="#recognition" class="btn">
+        EXPLORE RECOGNITION →
       </a>
 
-      <a class="btn"
-         href="https://www.linkedin.com/in/sanket-jagtap-b492541a6/"
-         target="_blank">
+      <a href="https://www.linkedin.com/in/sanket-jagtap-b492541a6/"
+         target="_blank" class="btn">
         LINKEDIN PROFILE
       </a>
     </div>
 
   </div>
 
-  <!-- INLINE ANIMATED HEAD - NO IMAGE REQUIRED -->
+  <!-- SELF-CONTAINED HOLOGRAPHIC HEAD -->
 
   <div class="head-scene">
 
-    <div class="head-rotator">
+    <div class="orbit"></div>
+    <div class="orbit two"></div>
+    <div class="orbit three"></div>
 
-      <svg class="head-svg"
-           viewBox="0 0 300 360"
+    <div class="head">
+
+      <svg viewBox="0 0 300 360"
            xmlns="http://www.w3.org/2000/svg">
 
         <defs>
@@ -607,17 +674,11 @@ footer{
               L252 153
               C252 74 215 22 150 22Z"/>
           </clipPath>
-
-          <radialGradient id="faceShade">
-            <stop offset="0%" stop-color="#0c5531"/>
-            <stop offset="100%" stop-color="#020b07"/>
-          </radialGradient>
         </defs>
 
-        <!-- HEAD SHAPE -->
+        <!-- HEAD -->
 
-        <path class="head-outline"
-          fill="url(#faceShade)"
+        <path class="head-shape"
           d="
           M150 22
           C85 22 48 74 48 153
@@ -629,13 +690,13 @@ footer{
 
         <!-- EARS -->
 
-        <path class="face-detail"
+        <path class="details"
           d="M49 150 Q23 125 35 183 Q39 208 55 204"/>
 
-        <path class="face-detail"
+        <path class="details"
           d="M251 150 Q277 125 265 183 Q261 208 245 204"/>
 
-        <!-- WIRE MESH -->
+        <!-- HOLOGRAPHIC MESH -->
 
         <g clip-path="url(#faceClip)" class="mesh">
 
@@ -647,7 +708,6 @@ footer{
           <path d="M30 220 Q150 255 270 220"/>
           <path d="M30 250 Q150 285 270 250"/>
           <path d="M30 280 Q150 315 270 280"/>
-          <path d="M30 310 Q150 345 270 310"/>
 
           <path d="M70 0 Q30 170 110 360"/>
           <path d="M100 0 Q75 170 130 360"/>
@@ -656,50 +716,33 @@ footer{
           <path d="M200 0 Q225 170 170 360"/>
           <path d="M230 0 Q270 170 190 360"/>
 
-          <path d="M45 40 Q150 180 45 320"/>
-          <path d="M255 40 Q150 180 255 320"/>
-
         </g>
 
-        <!-- FACE FEATURES -->
+        <!-- FACIAL FEATURES -->
 
-        <g class="face-detail">
+        <g class="details">
 
-          <!-- EYEBROWS -->
           <path d="M77 137 Q105 120 132 139"/>
           <path d="M168 139 Q195 120 223 137"/>
 
-          <!-- EYES -->
           <path d="M77 158 Q105 141 133 158 Q105 178 77 158Z"/>
           <path d="M167 158 Q195 141 223 158 Q195 178 167 158Z"/>
 
           <circle class="eye" cx="105" cy="158" r="5"/>
           <circle class="eye" cx="195" cy="158" r="5"/>
 
-          <!-- NOSE -->
           <path d="M150 155 L140 204 L150 211 L160 204"/>
 
-          <!-- MOUTH -->
           <path d="M115 241 Q150 254 185 241"/>
           <path d="M124 246 Q150 260 176 246"/>
 
-          <!-- CHIN -->
           <path d="M105 270 Q150 303 195 270"/>
 
         </g>
 
-        <!-- HOLOGRAPHIC HIGHLIGHTS -->
+        <!-- LIGHT DETAILS -->
 
-        <g class="mesh-bright head-pulse">
-          <path d="M55 105 Q150 65 245 105"/>
-          <path d="M62 228 Q150 280 238 228"/>
-          <path d="M150 30 L150 325"/>
-          <path d="M65 175 L235 175"/>
-        </g>
-
-        <!-- CIRCUIT DETAILS -->
-
-        <g stroke="#00ff91" fill="none" stroke-width="1.5">
+        <g stroke="#36c990" fill="none" stroke-width="1.4">
 
           <path d="M48 110 H20 V90 H5"/>
           <path d="M252 110 H280 V90 H295"/>
@@ -707,10 +750,10 @@ footer{
           <path d="M48 235 H20 V260 H5"/>
           <path d="M252 235 H280 V260 H295"/>
 
-          <circle cx="5" cy="90" r="3" fill="#00ff91"/>
-          <circle cx="295" cy="90" r="3" fill="#00ff91"/>
-          <circle cx="5" cy="260" r="3" fill="#00ff91"/>
-          <circle cx="295" cy="260" r="3" fill="#00ff91"/>
+          <circle cx="5" cy="90" r="3" fill="#36c990"/>
+          <circle cx="295" cy="90" r="3" fill="#36c990"/>
+          <circle cx="5" cy="260" r="3" fill="#36c990"/>
+          <circle cx="295" cy="260" r="3" fill="#36c990"/>
 
         </g>
 
@@ -718,20 +761,20 @@ footer{
 
     </div>
 
-    <div class="head-label">
-      [ HOLOGRAPHIC HUMAN INTERFACE ]
+    <div class="head-caption">
+      HOLOGRAPHIC HUMAN INTERFACE
     </div>
 
   </div>
 
 </div>
 
-<!-- ORGANISATION SLIDER -->
+<!-- RECOGNITION ORGANISATION SLIDER -->
 
 <div class="recognition-strip">
 
   <div class="strip-title">
-    // ORGANISATIONS THAT RECOGNISED MY SECURITY RESEARCH
+    // ORGANISATIONS RECOGNISING MY SECURITY RESEARCH
   </div>
 
   <div class="marquee">
@@ -795,6 +838,7 @@ footer{
     </div>
 
   </div>
+
 </div>
 
 <!-- ABOUT -->
@@ -807,22 +851,19 @@ footer{
 
   <p class="about-text">
 
-    I am <span class="green">Sanket J. Jagtap</span>,
-    an Indian cybersecurity professional and independent
-    security researcher passionate about identifying
-    vulnerabilities and strengthening digital security.
+    I am Sanket J. Jagtap, an Indian cybersecurity
+    professional and independent security researcher.
+
+    My work focuses on identifying security weaknesses,
+    conducting vulnerability assessments and contributing
+    to the security of digital systems through responsible
+    vulnerability disclosure.
 
     <br><br>
 
-    My work focuses on vulnerability assessment,
-    web application security, infrastructure security
-    and responsible vulnerability disclosure.
-
-    <br><br>
-
-    Through ethical security research and coordinated
-    disclosure, I aim to contribute towards making
-    digital systems more secure.
+    I am passionate about web application security,
+    infrastructure security, penetration testing and
+    continuous learning in cybersecurity.
 
   </p>
 
@@ -834,8 +875,8 @@ footer{
     </div>
 
     <div class="stat">
-      <strong>5</strong>
-      <small>Recognition organisations</small>
+      <strong>PHILIPS</strong>
+      <small>Hall of Honors</small>
     </div>
 
     <div class="stat">
@@ -844,15 +885,15 @@ footer{
     </div>
 
     <div class="stat">
-      <strong>ETHICAL</strong>
-      <small>Responsible Disclosure</small>
+      <strong>VAPT</strong>
+      <small>Security Assessment</small>
     </div>
 
   </div>
 
 </section>
 
-<!-- RECOGNITION -->
+<!-- RECOGNITION CARDS -->
 
 <section id="recognition">
 
@@ -880,7 +921,7 @@ footer{
       </div>
       <h3>Philips</h3>
       <div class="country">NETHERLANDS</div>
-      <p>Hall of Honors recognition for security research involving password-reset functionality.</p>
+      <p>Hall of Honors recognition for responsible security research.</p>
     </div>
 
     <div class="card">
@@ -900,7 +941,7 @@ footer{
       </div>
       <h3>Leiden University</h3>
       <div class="country">NETHERLANDS</div>
-      <p>Letter of Appreciation for identifying TLS cipher-suite configuration issues across load balancers.</p>
+      <p>Letter of Appreciation for identifying TLS cipher-suite configuration issues.</p>
     </div>
 
     <div class="card">
@@ -917,7 +958,7 @@ footer{
 
 </section>
 
-<!-- RESEARCH -->
+<!-- TECHNICAL EXPERTISE -->
 
 <section class="research" id="research">
 
@@ -926,6 +967,7 @@ footer{
   <h2>SECURITY <span>RESEARCH</span></h2>
 
   <div class="skills">
+
     <div class="skill">Web Application Security</div>
     <div class="skill">Infrastructure VAPT</div>
     <div class="skill">Vulnerability Assessment</div>
@@ -935,7 +977,8 @@ footer{
     <div class="skill">Nessus</div>
     <div class="skill">Burp Suite</div>
     <div class="skill">Responsible Disclosure</div>
-    <div class="skill">Security Configuration Auditing</div>
+    <div class="skill">Security Auditing</div>
+
   </div>
 
 </section>
@@ -953,128 +996,137 @@ footer{
     and responsible disclosure.
   </p>
 
-  <div class="buttons" style="justify-content:center">
+  <div class="buttons">
 
     <a class="btn"
        href="https://www.linkedin.com/in/sanket-jagtap-b492541a6/"
        target="_blank">
-      LINKEDIN
+       LINKEDIN
     </a>
 
     <a class="btn"
        href="https://bugcrowd.com/Sanket-Jagtap"
        target="_blank">
-      BUGCROWD
+       BUGCROWD
     </a>
 
   </div>
 
 </section>
 
+<!-- FOOTER -->
+
 <footer>
   <p>SANKET J. JAGTAP | CYBERSECURITY RESEARCHER</p>
-  <p class="green">RESEARCH. DISCOVER. DISCLOSE RESPONSIBLY.</p>
+  <p><span>RESEARCH. DISCOVER. DISCLOSE RESPONSIBLY.</span></p>
   <p>© <span id="year"></span> All Rights Reserved.</p>
 </footer>
 
 <script>
 
-/* MATRIX RAIN */
+/* MATRIX BACKGROUND */
 
-const canvas=document.getElementById("matrix");
-const ctx=canvas.getContext("2d");
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
 
-let fontSize=14;
-let drops=[];
+const fontSize = 14;
+let drops = [];
 
-function resize(){
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
+function resizeMatrix() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 
-  let count=Math.ceil(canvas.width/fontSize);
-  drops=Array(count).fill(1);
+  const count = Math.ceil(canvas.width / fontSize);
+  drops = Array(count).fill(1);
 }
 
-window.addEventListener("resize",resize);
-resize();
+window.addEventListener("resize", resizeMatrix);
+resizeMatrix();
 
-const chars="01ABCDEFGHIJKLMNOPQRSTUVWXYZ$#@<>";
+const characters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-function drawMatrix(){
+function drawMatrix() {
 
-  ctx.fillStyle="rgba(2,8,5,0.09)";
+  ctx.fillStyle = "rgba(8,11,14,0.13)";
   ctx.fillRect(0,0,canvas.width,canvas.height);
 
-  ctx.fillStyle="#00ff91";
-  ctx.font=fontSize+"px monospace";
+  ctx.fillStyle = "#36c990";
+  ctx.font = fontSize + "px monospace";
 
-  drops.forEach((y,i)=>{
+  drops.forEach((y,i) => {
 
-    let char=chars[Math.floor(Math.random()*chars.length)];
+    const char = characters[
+      Math.floor(Math.random() * characters.length)
+    ];
 
-    ctx.fillText(char,i*fontSize,y*fontSize);
+    ctx.fillText(char,i * fontSize,y * fontSize);
 
-    if(y*fontSize>canvas.height && Math.random()>.975){
-      drops[i]=0;
+    if (
+      y * fontSize > canvas.height &&
+      Math.random() > 0.975
+    ) {
+      drops[i] = 0;
     }
 
     drops[i]++;
 
   });
+
 }
 
-setInterval(drawMatrix,55);
+setInterval(drawMatrix,65);
 
-/* TYPING EFFECT */
+/* TYPING ANIMATION */
 
-const messages=[
+const messages = [
+  "Independent Cybersecurity Researcher",
   "Web Application Security Researcher",
   "Infrastructure Security Analyst",
-  "Responsible Disclosure Contributor",
-  "Independent Cybersecurity Researcher"
+  "Responsible Disclosure Contributor"
 ];
 
-let messageIndex=0;
-let charIndex=0;
-let deleting=false;
+let messageIndex = 0;
+let charIndex = 0;
+let deleting = false;
 
-function typeEffect(){
+function typeEffect() {
 
-  const el=document.getElementById("typed");
-  const current=messages[messageIndex];
+  const element = document.getElementById("typed");
+  const current = messages[messageIndex];
 
-  if(!deleting){
+  if (!deleting) {
 
-    el.textContent=current.substring(0,charIndex+1);
+    element.textContent = current.substring(0,charIndex + 1);
     charIndex++;
 
-    if(charIndex===current.length){
-      deleting=true;
-      setTimeout(typeEffect,1500);
+    if (charIndex === current.length) {
+      deleting = true;
+      setTimeout(typeEffect,1600);
       return;
     }
 
-  }else{
+  } else {
 
-    el.textContent=current.substring(0,charIndex-1);
+    element.textContent = current.substring(0,charIndex - 1);
     charIndex--;
 
-    if(charIndex===0){
-      deleting=false;
-      messageIndex=(messageIndex+1)%messages.length;
+    if (charIndex === 0) {
+      deleting = false;
+      messageIndex = (messageIndex + 1) % messages.length;
     }
 
   }
 
-  setTimeout(typeEffect,deleting?40:80);
+  setTimeout(typeEffect,deleting ? 35 : 75);
+
 }
 
 typeEffect();
 
-/* YEAR */
+/* CURRENT YEAR */
 
-document.getElementById("year").textContent=
-new Date().getFullYear();
+document.getElementById("year").textContent =
+  new Date().getFullYear();
 
 </script>
 
