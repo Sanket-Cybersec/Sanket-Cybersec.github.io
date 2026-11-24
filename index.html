@@ -236,11 +236,10 @@ h2 span {
   color: var(--muted);
 }
 
-/* ORGANISATION SLIDER */
-
+/* SLIDING ORGANISATION LOGO CARDS */
 .recognition-strip {
-  padding: 35px 0;
-  background: #061309;
+  padding: 38px 0 44px;
+  background: #041008;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   overflow: hidden;
@@ -250,51 +249,113 @@ h2 span {
   text-align: center;
   font-family: Consolas, monospace;
   font-size: 12px;
-  color: #a9c9ae;
+  color: #b8eac4;
   letter-spacing: 3px;
-  margin-bottom: 28px;
+  margin: 0 5% 28px;
 }
 
-.marquee {
+.org-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 4px 0 12px;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+}
+
+.org-slider-track {
   display: flex;
   width: max-content;
-  animation: slide 32s linear infinite;
+  animation: orgSlide 48s linear infinite;
+  will-change: transform;
 }
 
-.marquee:hover {
+.org-slider:hover .org-slider-track {
   animation-play-state: paused;
 }
 
-.marquee-group {
+.org-slider-group {
   display: flex;
-  align-items: center;
-  gap: 75px;
-  padding-right: 75px;
+  align-items: stretch;
+  gap: 18px;
+  padding: 0 9px;
 }
 
-.org {
+.org-card {
+  width: 173px;
+  min-width: 173px;
+  min-height: 132px;
+  padding: 12px 10px 11px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 13px;
-  white-space: nowrap;
-  color: #e0f2e3;
-  font-weight: 600;
-  font-size: 16px;
+  justify-content: center;
+  gap: 9px;
+  text-align: center;
+  background: rgba(1, 15, 6, .82);
+  border: 1px solid #0aa83d;
+  border-radius: 15px;
+  box-shadow: inset 0 0 18px rgba(0, 255, 80, .035);
+  transition: border-color .22s ease, box-shadow .22s ease;
 }
 
-.org img {
-  width: 42px;
-  height: 42px;
-  object-fit: contain;
-  background: white;
+.org-card:hover {
+  border-color: #20ff65;
+  box-shadow: 0 0 22px rgba(0, 255, 80, .15);
+}
+
+.org-logo-wrap {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: #fff;
   padding: 5px;
-  border-radius: 6px;
+  flex: 0 0 auto;
 }
 
-@keyframes slide {
+.org-logo-wrap img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.org-card-name {
+  color: #e5f4e8;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.3;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+@keyframes orgSlide {
+  from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 
+@media (max-width: 620px) {
+  .recognition-strip { padding: 30px 0 34px; }
+  .strip-title {
+    font-size: 10px;
+    line-height: 1.7;
+    letter-spacing: 2px;
+  }
+  .org-card {
+    width: 150px;
+    min-width: 150px;
+    min-height: 126px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .org-slider-track { animation: none; }
+}
 /* RECOGNITION CARDS */
 
 .cards {
@@ -676,6 +737,35 @@ footer span {
   flex: 0 0 42px;
 }
 
+
+.hero-name-single-line {
+  flex-direction: row;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: clamp(38px, 6.3vw, 88px);
+  letter-spacing: -3px;
+}
+
+.hero-name-single-line .given-name {
+  color: #20ff65;
+}
+
+@media (max-width: 600px) {
+  .hero-name-single-line {
+    font-size: clamp(25px, 7.2vw, 42px);
+    letter-spacing: -1.4px;
+  }
+}
+
+
+.hero-name-single-line .name-white {
+  color: #effff2;
+}
+
+.hero-name-single-line .name-green {
+  color: #20ff65;
+}
+
 </style>
 </head>
 
@@ -700,9 +790,8 @@ footer span {
   <div class="hero-content">
     <div class="terminal">● INDEPENDENT SECURITY RESEARCHER</div>
 
-    <h1 class="hero-name">
-      <span class="surname">JAGTAP</span>
-      <span class="given-name">SANKET J.</span>
+    <h1 class="hero-name hero-name-single-line">
+      <span class="given-name"><span class="name-white">SANKET J.</span> <span class="name-green">JAGTAP</span></span>
     </h1>
 
     <p class="subtitle">
@@ -723,44 +812,172 @@ footer span {
   </div>
 </div>
 
-<!-- ORGANISATION SLIDER -->
-
-<div class="recognition-strip">
-
-  <div class="strip-title">
-    // ORGANISATIONS RECOGNISING MY SECURITY RESEARCH
+<!-- ORGANISATIONS RECOGNISING MY SECURITY RESEARCH -->
+<section class="recognition-strip" id="organisations">
+  <div class="strip-title">// ORGANISATIONS RECOGNISING MY SECURITY RESEARCH</div>
+  <div class="org-slider" aria-label="Organisations recognising my security research">
+    <div class="org-slider-track">
+      <div class="org-slider-group">
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=nasa.gov&sz=128"
+         alt="NASA logo" loading="lazy">
   </div>
-
-  <div class="marquee">
-<div class="marquee-group">
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=nasa.gov&sz=128" alt="NASA"><span>NASA</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=philips.com&sz=128" alt="PHILIPS"><span>PHILIPS</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=education.govt.nz&sz=128" alt="MINISTRY OF EDUCATION"><span>MINISTRY OF EDUCATION</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=universiteitleiden.nl&sz=128" alt="LEIDEN UNIVERSITY"><span>LEIDEN UNIVERSITY</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=qwilr.com&sz=128" alt="QWILR"><span>QWILR</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=kit.edu&sz=128" alt="KIT"><span>KIT</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=dhs.gov&sz=128" alt="DEPARTMENT OF HOMELAND SECURITY"><span>DEPARTMENT OF HOMELAND SECURITY</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=csb.gov&sz=128" alt="U.S. CHEMICAL SAFETY BOARD"><span>U.S. CHEMICAL SAFETY BOARD</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=fcc.gov&sz=128" alt="FEDERAL COMMUNICATIONS COMMISSION"><span>FEDERAL COMMUNICATIONS COMMISSION</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=fdic.gov&sz=128" alt="FEDERAL DEPOSIT INSURANCE CORPORATION"><span>FEDERAL DEPOSIT INSURANCE CORPORATION</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=dol.gov&sz=128" alt="DEPARTMENT OF LABOR"><span>DEPARTMENT OF LABOR</span></div>
+  <div class="org-card-name">NASA</div>
 </div>
-<div class="marquee-group" aria-hidden="true">
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=nasa.gov&sz=128" alt=""><span>NASA</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=philips.com&sz=128" alt=""><span>PHILIPS</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=education.govt.nz&sz=128" alt=""><span>MINISTRY OF EDUCATION</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=universiteitleiden.nl&sz=128" alt=""><span>LEIDEN UNIVERSITY</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=qwilr.com&sz=128" alt=""><span>QWILR</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=kit.edu&sz=128" alt=""><span>KIT</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=dhs.gov&sz=128" alt=""><span>DEPARTMENT OF HOMELAND SECURITY</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=csb.gov&sz=128" alt=""><span>U.S. CHEMICAL SAFETY BOARD</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=fcc.gov&sz=128" alt=""><span>FEDERAL COMMUNICATIONS COMMISSION</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=fdic.gov&sz=128" alt=""><span>FEDERAL DEPOSIT INSURANCE CORPORATION</span></div>
-  <div class="org"><img src="https://www.google.com/s2/favicons?domain=dol.gov&sz=128" alt=""><span>DEPARTMENT OF LABOR</span></div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=philips.com&sz=128"
+         alt="Philips logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Philips</div>
 </div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=education.govt.nz&sz=128"
+         alt="Ministry of Education logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Ministry of Education</div>
 </div>
-
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=universiteitleiden.nl&sz=128"
+         alt="Leiden University logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Leiden University</div>
 </div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=qwilr.com&sz=128"
+         alt="Qwilr logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Qwilr</div>
+</div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=kit.edu&sz=128"
+         alt="KIT logo" loading="lazy">
+  </div>
+  <div class="org-card-name">KIT</div>
+</div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=dhs.gov&sz=128"
+         alt="Department of Homeland Security logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Department of Homeland Security</div>
+</div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=csb.gov&sz=128"
+         alt="U.S. Chemical Safety Board logo" loading="lazy">
+  </div>
+  <div class="org-card-name">U.S. Chemical Safety Board</div>
+</div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=fcc.gov&sz=128"
+         alt="Federal Communications Commission logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Federal Communications Commission</div>
+</div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=fdic.gov&sz=128"
+         alt="Federal Deposit Insurance Corporation logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Federal Deposit Insurance Corporation</div>
+</div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=dol.gov&sz=128"
+         alt="Department of Labor logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Department of Labor</div>
+</div>
+      </div>
+      <div class="org-slider-group" aria-hidden="true">
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=nasa.gov&sz=128"
+         alt="NASA logo" loading="lazy">
+  </div>
+  <div class="org-card-name">NASA</div>
+</div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=philips.com&sz=128"
+         alt="Philips logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Philips</div>
+</div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=education.govt.nz&sz=128"
+         alt="Ministry of Education logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Ministry of Education</div>
+</div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=universiteitleiden.nl&sz=128"
+         alt="Leiden University logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Leiden University</div>
+</div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=qwilr.com&sz=128"
+         alt="Qwilr logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Qwilr</div>
+</div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=kit.edu&sz=128"
+         alt="KIT logo" loading="lazy">
+  </div>
+  <div class="org-card-name">KIT</div>
+</div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=dhs.gov&sz=128"
+         alt="Department of Homeland Security logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Department of Homeland Security</div>
+</div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=csb.gov&sz=128"
+         alt="U.S. Chemical Safety Board logo" loading="lazy">
+  </div>
+  <div class="org-card-name">U.S. Chemical Safety Board</div>
+</div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=fcc.gov&sz=128"
+         alt="Federal Communications Commission logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Federal Communications Commission</div>
+</div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=fdic.gov&sz=128"
+         alt="Federal Deposit Insurance Corporation logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Federal Deposit Insurance Corporation</div>
+</div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=dol.gov&sz=128"
+         alt="Department of Labor logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Department of Labor</div>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ABOUT -->
 
