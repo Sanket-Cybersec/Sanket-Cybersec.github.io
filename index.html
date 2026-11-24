@@ -92,7 +92,7 @@ nav a:hover {
   min-height: 690px;
   padding: 72px 7%;
   display: grid;
-  grid-template-columns: 1.02fr .98fr;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, .9fr);
   align-items: center;
   gap: 35px;
   position: relative;
@@ -112,20 +112,7 @@ nav a:hover {
   border-bottom: 1px solid var(--border);
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 520px;
-  height: 520px;
-  right: 8%;
-  top: 5%;
-  border: 1px solid rgba(32,255,101,.12);
-  border-radius: 50%;
-  box-shadow:
-    0 0 90px rgba(0,220,75,.12),
-    inset 0 0 80px rgba(0,220,75,.08);
-  pointer-events: none;
-}
+
 
 .terminal {
   color: #55ff85;
@@ -195,132 +182,7 @@ nav a:hover {
   color: #031006;
 }
 
-/* PERSONAL PHOTO */
-
-.head-scene {
-  height: 510px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.portrait-frame {
-  position: relative;
-  z-index: 2;
-  height: min(490px, 48vw);
-  width: min(390px, 90%);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: 190px 190px 24px 24px;
-  background: linear-gradient(
-    145deg,
-    rgba(0,210,70,.24),
-    rgba(3,20,8,.08)
-  );
-  border: 1px solid rgba(32,255,101,.28);
-  box-shadow:
-    0 25px 90px rgba(0,0,0,.38),
-    0 0 65px rgba(0,220,75,.20);
-}
-
-.portrait-frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 55%,
-    rgba(3,13,27,.75) 100%
-  );
-  pointer-events: none;
-}
-
-.portrait {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  filter: saturate(.82) contrast(1.06);
-}
-
-/* ANIMATED BLUE ORBITS */
-
-.orbit {
-  position: absolute;
-  width: 440px;
-  height: 440px;
-  border: 1px solid rgba(32,255,101,.19);
-  border-radius: 50%;
-  animation: orbit 24s linear infinite;
-}
-
-.orbit.two {
-  width: 500px;
-  height: 190px;
-  border-color: rgba(32,255,101,.28);
-  transform: rotate(-25deg);
-  animation: orbit2 18s linear infinite;
-}
-
-.orbit.three {
-  width: 350px;
-  height: 350px;
-  border-style: dashed;
-  border-color: rgba(32,255,101,.12);
-  animation-direction: reverse;
-}
-
-@keyframes orbit {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes orbit2 {
-  to { transform: rotate(335deg); }
-}
-
-.head-caption {
-  position: absolute;
-  bottom: 2px;
-  text-align: center;
-  width: 100%;
-  font-family: Consolas, monospace;
-  font-size: 10px;
-  color: #8dfca8;
-  letter-spacing: 3px;
-  z-index: 3;
-}
-
-/* FLOATING INFORMATION PANEL */
-
-.hero-panel {
-  position: absolute;
-  right: -8px;
-  bottom: 42px;
-  z-index: 4;
-  width: 190px;
-  padding: 15px;
-  border: 1px solid rgba(32,255,101,.28);
-  border-radius: 14px;
-  background: rgba(3,20,8,.90);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 12px 35px rgba(0,0,0,.3);
-  color: #d5ffe0;
-  font-size: 10px;
-}
-
-.hero-panel strong {
-  display: block;
-  color: #38ff72;
-  font-size: 20px;
-  margin: 7px 0 4px;
-}
-
-.hero-panel small {
-  color: #9dbfa5;
-}
+/* PLAIN RIGHT SIDE — NO IMAGE OR NAME */
 
 /* COMMON SECTIONS */
 
@@ -580,18 +442,20 @@ footer span {
     justify-content: center;
   }
 
-  .head-scene {
-    height: 480px;
+  .name-art {
+    min-height: 330px;
+    align-items: center;
+    text-align: center;
+    padding: 24px 10px;
   }
 
-  .portrait-frame {
-    height: 420px;
-    width: min(340px, 82%);
+  .name-art-name {
+    font-size: clamp(48px, 12vw, 76px);
   }
 
-  .hero-panel {
-    right: 0;
-    bottom: 28px;
+  .name-art-line {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   header {
@@ -609,29 +473,18 @@ footer span {
     padding: 48px 5%;
   }
 
-  .head-scene {
-    height: 420px;
+  .name-art {
+    min-height: 280px;
   }
 
-  .portrait-frame {
-    height: 360px;
-    width: 78%;
+  .name-art-name {
+    font-size: clamp(44px, 13vw, 64px);
+    letter-spacing: -2px;
   }
 
-  .orbit {
-    width: 290px;
-    height: 290px;
-  }
-
-  .orbit.two {
-    width: 320px;
-    height: 125px;
-  }
-
-  .hero-panel {
-    width: 155px;
-    right: -4px;
+  .name-art-foot {
     font-size: 9px;
+    letter-spacing: 1px;
   }
 
   section {
@@ -653,6 +506,127 @@ footer span {
 
 :focus-visible { outline: 2px solid #20ff65; outline-offset: 4px; }
 ::selection { background: rgba(32,255,101,.28); color: #effff2; }
+
+/* ACHIEVEMENT DETAILS */
+.recognition-intro {
+  max-width: 820px;
+  margin: -12px 0 30px;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.achievement-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 24px;
+  transition: .25s ease;
+  min-width: 0;
+}
+
+.achievement-card:hover,
+.achievement-card[open] {
+  border-color: var(--green);
+  background: var(--surface2);
+  transform: translateY(-3px);
+}
+
+.achievement-card summary {
+  list-style: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.achievement-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.achievement-card summary::after {
+  content: "+ VIEW DOCUMENTS";
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--green);
+  font: 10px Consolas, monospace;
+  letter-spacing: 1px;
+}
+
+.achievement-card[open] summary::after {
+  content: "− CLOSE DETAILS";
+}
+
+.achievement-card h3 {
+  font-size: 19px;
+  line-height: 1.35;
+  margin: 12px 0 8px;
+}
+
+.achievement-card .achievement-type {
+  color: var(--green);
+  font: 10px Consolas, monospace;
+  letter-spacing: 1.3px;
+  margin-top: 10px;
+}
+
+.achievement-card .achievement-description {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.75;
+  margin-top: 12px;
+}
+
+.achievement-details {
+  border-top: 1px solid var(--border);
+  margin-top: 20px;
+  padding-top: 17px;
+}
+
+.achievement-details h4 {
+  color: var(--white);
+  font-size: 12px;
+  margin: 0 0 10px;
+}
+
+.achievement-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.achievement-link {
+  display: inline-block;
+  color: var(--green);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 9px 12px;
+  text-decoration: none;
+  font: 10px Consolas, monospace;
+  transition: .2s;
+}
+
+.achievement-link:hover {
+  color: #031006;
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.achievement-link.is-placeholder {
+  opacity: .65;
+  border-style: dashed;
+}
+
+.achievement-note {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+@media(max-width: 480px) {
+  .achievement-card { padding: 19px; }
+  .achievement-links { flex-direction: column; }
+  .achievement-link { text-align: center; }
+}
+
 </style>
 </head>
 
@@ -708,33 +682,6 @@ footer span {
         LINKEDIN PROFILE
       </a>
     </div>
-  </div>
-
-  <!-- GREEN HOODED HACKER HERO IMAGE -->
-
-  <div class="head-scene">
-
-    <div class="orbit"></div>
-    <div class="orbit two"></div>
-    <div class="orbit three"></div>
-
-    <div class="portrait-frame">
-      <img
-        class="portrait"
-        src="digital-head.gif"
-        alt="Hooded hacker in neon green cybersecurity lighting">
-    </div>
-
-    <div class="hero-panel">
-      SECURITY RESEARCH PROFILE
-      <strong>VAPT &amp; RESEARCH</strong>
-      <small>Web • Infrastructure </small>
-    </div>
-
-    <div class="head-caption">
-      SANKET J. JAGTAP // SECURITY RESEARCH
-    </div>
-
   </div>
 
 </div>
@@ -855,71 +802,20 @@ footer span {
 
 </section>
 
-<!-- RECOGNITION CARDS -->
-
+<!-- RECOGNITION & SUPPORTING DOCUMENTS -->
 <section id="recognition">
-
   <div class="section-label">// 02. ACHIEVEMENTS</div>
-
   <h2>RECOGNITION &amp; <span>APPRECIATION</span></h2>
+  <p class="recognition-intro">
+    Select an achievement to view its supporting document and verification link.
+    Add your own document files and official verification URLs in the configuration below.
+  </p>
 
-  <div class="cards">
-
-    <div class="card">
-      <div class="card-top">
-        <img src="https://www.google.com/s2/favicons?domain=nasa.gov&sz=128" alt="NASA">
-        <span class="tag">RECOGNITION</span>
-      </div>
-      <h3>NASA</h3>
-      <div class="country">UNITED STATES</div>
-      <p>Official Letter of Recognition and Hall of Fame.</p>
-      <p>28 May 2026</p>
-    </div>
-
-    <div class="card">
-      <div class="card-top">
-        <img src="https://www.google.com/s2/favicons?domain=philips.com&sz=128" alt="Philips">
-        <span class="tag">HALL OF HONORS</span>
-      </div>
-      <h3>Philips</h3>
-      <div class="country">NETHERLANDS</div>
-      <p>Hall of Honors recognition for responsible security research.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-top">
-        <img src="https://www.google.com/s2/favicons?domain=education.govt.nz&sz=128" alt="Ministry of Education">
-        <span class="tag">APPRECIATION</span>
-      </div>
-      <h3>Ministry of Education</h3>
-      <div class="country">NEW ZEALAND GOVERNMENT</div>
-      <p>Official Letter of Acknowledgemnt and Appreciation for responsibly disclosing security vulnerabilities.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-top">
-        <img src="https://www.google.com/s2/favicons?domain=universiteitleiden.nl&sz=128" alt="Leiden University">
-        <span class="tag">APPRECIATION</span>
-      </div>
-      <h3>Leiden University</h3>
-      <div class="country">NETHERLANDS</div>
-      <p>Letter of Appreciation.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-top">
-        <img src="https://www.google.com/s2/favicons?domain=qwilr.com&sz=128" alt="Qwilr">
-        <span class="tag">ACKNOWLEDGEMENT</span>
-      </div>
-      <h3>Qwilr</h3>
-      <div class="country">SECURITY RESEARCH</div>
-      <p>Acknowledgement received for responsible security research and disclosure.</p>
-    </div>
-
-  </div>
-
+  <div class="cards" id="achievementGrid"></div>
 </section>
 
+<!-- ACHIEVEMENT DOCUMENTS: keep your PDF/image files in the "documents" folder.
+     Update document and verification values in the achievements array below. -->
 <!-- TECHNICAL EXPERTISE -->
 
 <section class="research" id="research">
@@ -1030,6 +926,170 @@ function typeEffect() {
 }
 
 typeEffect();
+
+/* ACHIEVEMENTS
+   HOW TO ADD YOUR FILES:
+   1. Create a folder named "documents" beside index.html.
+   2. Copy each PDF/image into that folder.
+   3. Replace the example document path below with the exact filename.
+   4. Replace verificationUrl with the official public verification page.
+   Use "" if a document or verification link is not available yet.
+*/
+const achievements = [
+  {
+    title: "NASA",
+    category: "LETTER OF RECOGNITION",
+    location: "UNITED STATES",
+    description: "Official Letter of Recognition for responsible vulnerability disclosure.",
+    documents: [
+      { label: "View supporting letter (PDF)", url: "documents/nasa-letter.pdf" }
+    ],
+    verificationUrl: ""
+  },
+  {
+    title: "Philips",
+    category: "HALL OF HONORS",
+    location: "NETHERLANDS",
+    description: "Hall of Honors recognition for responsible security research.",
+    documents: [
+      { label: "View supporting document (PDF)", url: "documents/philips-recognition.pdf" }
+    ],
+    verificationUrl: ""
+  },
+  {
+    title: "Ministry of Education",
+    category: "LETTER OF APPRECIATION",
+    location: "NEW ZEALAND",
+    description: "Official Letter of Appreciation for responsibly disclosing security vulnerabilities.",
+    documents: [
+      { label: "View supporting letter (PDF)", url: "documents/ministry-of-education-letter.pdf" }
+    ],
+    verificationUrl: ""
+  },
+  {
+    title: "Leiden University",
+    category: "LETTER OF APPRECIATION",
+    location: "NETHERLANDS",
+    description: "Letter of Appreciation.",
+    documents: [
+      { label: "View supporting letter (PDF)", url: "documents/leiden-university-letter.pdf" }
+    ],
+    verificationUrl: ""
+  },
+  {
+    title: "Qwilr",
+    category: "ACKNOWLEDGEMENT",
+    location: "SECURITY RESEARCH",
+    description: "Acknowledgement received for responsible security research and disclosure.",
+    documents: [
+      { label: "View supporting document (PDF)", url: "documents/qwilr-acknowledgement.pdf" }
+    ],
+    verificationUrl: ""
+  },
+  {
+    title: "KIT",
+    category: "LETTER OF ACKNOWLEDGEMENT",
+    location: "GERMANY",
+    description: "Letter of Acknowledgement.",
+    documents: [
+      { label: "View supporting letter (PDF)", url: "documents/kit-letter-of-acknowledgement.pdf" }
+    ],
+    verificationUrl: ""
+  },
+  {
+    title: "Department of Homeland Security",
+    category: "HALL OF FAME",
+    location: "UNITED STATES",
+    description: "Hall of Fame recognition.",
+    documents: [
+      { label: "View supporting evidence (PDF)", url: "documents/department-of-homeland-security-hall-of-fame.pdf" }
+    ],
+    verificationUrl: ""
+  },
+  {
+    title: "U.S. Chemical Safety and Hazard Investigation Board (CSB)",
+    category: "HALL OF FAME",
+    location: "UNITED STATES",
+    description: "Hall of Fame recognition.",
+    documents: [
+      { label: "View supporting evidence (PDF)", url: "documents/csb-hall-of-fame.pdf" }
+    ],
+    verificationUrl: ""
+  },
+  {
+    title: "Federal Communications Commission",
+    category: "HALL OF FAME",
+    location: "UNITED STATES",
+    description: "Hall of Fame recognition.",
+    documents: [
+      { label: "View supporting evidence (PDF)", url: "documents/fcc-hall-of-fame.pdf" }
+    ],
+    verificationUrl: ""
+  },
+  {
+    title: "Federal Deposit Insurance Corporation",
+    category: "HALL OF FAME",
+    location: "UNITED STATES",
+    description: "Hall of Fame recognition.",
+    documents: [
+      { label: "View supporting evidence (PDF)", url: "documents/fdic-hall-of-fame.pdf" }
+    ],
+    verificationUrl: ""
+  },
+  {
+    title: "Department of Labor",
+    category: "HALL OF FAME",
+    location: "UNITED STATES",
+    description: "Hall of Fame recognition.",
+    documents: [
+      { label: "View supporting evidence (PDF)", url: "documents/department-of-labor-hall-of-fame.pdf" }
+    ],
+    verificationUrl: ""
+  }
+];
+
+function renderAchievements() {
+  const grid = document.getElementById("achievementGrid");
+  if (!grid) return;
+
+  grid.innerHTML = achievements.map((item) => {
+    const documentLinks = (item.documents || []).map((doc) => {
+      const isPlaceholder = !doc.url || doc.url.includes("REPLACE_WITH");
+      const href = doc.url || "#";
+      return `<a class="achievement-link ${isPlaceholder ? "is-placeholder" : ""}"
+                 href="${href}" ${isPlaceholder ? 'aria-disabled="true" onclick="return false;"' : 'target="_blank" rel="noopener"'}
+                 >${doc.label}</a>`;
+    }).join("");
+
+    const hasVerification = Boolean(item.verificationUrl);
+    const verificationLink = hasVerification
+      ? `<a class="achievement-link" href="${item.verificationUrl}" target="_blank" rel="noopener">Official verification ↗</a>`
+      : `<span class="achievement-link is-placeholder">Add verification URL in code</span>`;
+
+    return `
+      <details class="achievement-card">
+        <summary>
+          <div class="achievement-type">${item.category}</div>
+          <h3>${item.title}</h3>
+          <div class="country">${item.location}</div>
+          <p class="achievement-description">${item.description}</p>
+        </summary>
+        <div class="achievement-details">
+          <h4>SUPPORTING DOCUMENTS</h4>
+          <div class="achievement-links">${documentLinks}</div>
+          <h4 style="margin-top:18px">VERIFICATION</h4>
+          <div class="achievement-links">${verificationLink}</div>
+          <p class="achievement-note">
+            Supporting files and verification URLs are managed by editing this achievement's
+            entry in the <code>achievements</code> array.
+          </p>
+        </div>
+      </details>
+    `;
+  }).join("");
+}
+
+renderAchievements();
 
 /* CURRENT YEAR */
 
