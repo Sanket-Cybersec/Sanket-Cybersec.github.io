@@ -90,25 +90,16 @@ nav a:hover {
 
 .hero {
   min-height: 690px;
-  padding: 72px 7%;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(300px, .9fr);
+  padding: 90px 7%;
+  display: flex;
   align-items: center;
-  gap: 35px;
+  justify-content: center;
+  text-align: center;
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(
-      ellipse at 72% 48%,
-      rgba(0,190,65,.28),
-      transparent 48%
-    ),
-    linear-gradient(
-      115deg,
-      #041008 0%,
-      #082344 55%,
-      #041008 100%
-    );
+    radial-gradient(ellipse at 50% 48%, rgba(0,190,65,.28), transparent 52%),
+    linear-gradient(115deg, #041008 0%, #082344 55%, #041008 100%);
   border-bottom: 1px solid var(--border);
 }
 
@@ -542,7 +533,7 @@ footer span {
 }
 
 .achievement-card summary::after {
-  content: "+ VIEW DOCUMENTS";
+  content: "+ INFO";
   display: inline-block;
   margin-top: 20px;
   color: var(--green);
@@ -551,7 +542,7 @@ footer span {
 }
 
 .achievement-card[open] summary::after {
-  content: "− CLOSE DETAILS";
+  content: "− CLOSE INFO";
 }
 
 .achievement-card h3 {
@@ -627,6 +618,64 @@ footer span {
   .achievement-link { text-align: center; }
 }
 
+
+/* CENTERED NAME HERO */
+.hero-content {
+  width: min(100%, 980px);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  margin: 0 0 26px;
+  font-size: clamp(54px, 9vw, 112px);
+  line-height: .9;
+  letter-spacing: -5px;
+  font-weight: 850;
+}
+
+.hero-name .surname {
+  color: #20ff65;
+  text-shadow: 0 0 34px rgba(32,255,101,.18);
+}
+
+.hero-name .given-name {
+  color: #effff2;
+}
+
+.hero-content .subtitle {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.hero-content .buttons {
+  justify-content: center;
+}
+
+.hero-content .typing {
+  margin-top: 22px;
+}
+
+@media(max-width: 600px) {
+  .hero { min-height: 620px; padding: 75px 6%; }
+  .hero-name { letter-spacing: -2px; font-size: clamp(48px, 13vw, 76px); }
+}
+
+
+.org {
+  flex-shrink: 0;
+  font-size: 13px;
+  letter-spacing: .4px;
+}
+.org img {
+  flex: 0 0 42px;
+}
+
 </style>
 </head>
 
@@ -641,7 +690,6 @@ footer span {
     <a href="#home">HOME</a>
     <a href="#about">ABOUT</a>
     <a href="#recognition">RECOGNITION</a>
-    <a href="#research">RESEARCH</a>
     <a href="#contact">CONTACT</a>
   </nav>
 </header>
@@ -649,18 +697,16 @@ footer span {
 <!-- HERO -->
 
 <div class="hero" id="home">
-
-  <div>
+  <div class="hero-content">
     <div class="terminal">● INDEPENDENT SECURITY RESEARCHER</div>
 
-    <h1>
-      SANKET J.<br>
-      <span>JAGTAP</span>
+    <h1 class="hero-name">
+      <span class="surname">JAGTAP</span>
+      <span class="given-name">SANKET J.</span>
     </h1>
 
     <p class="subtitle">
-      Cybersecurity Researcher | Security Analyst |
-      Ethical Hacker.
+      Cybersecurity Researcher | Security Analyst | Ethical Hacker.
       I identify security weaknesses and help make digital systems safer through
       vulnerability research and responsible disclosure.
     </p>
@@ -670,20 +716,11 @@ footer span {
     </div>
 
     <div class="buttons">
-      <a href="#recognition" class="btn">
-        EXPLORE RECOGNITION →
-      </a>
-
-      <a
-        href="https://www.linkedin.com/in/sanket-jagtap-b492541a6/"
-        target="_blank"
-        rel="noopener"
-        class="btn">
-        LINKEDIN PROFILE
-      </a>
+      <a href="#recognition" class="btn">EXPLORE RECOGNITION →</a>
+      <a href="https://www.linkedin.com/in/sanket-jagtap-b492541a6/"
+         target="_blank" rel="noopener" class="btn">LINKEDIN PROFILE</a>
     </div>
   </div>
-
 </div>
 
 <!-- ORGANISATION SLIDER -->
@@ -695,71 +732,33 @@ footer span {
   </div>
 
   <div class="marquee">
-
-    <div class="marquee-group">
-
-      <div class="org">
-        <img src="https://www.google.com/s2/favicons?domain=nasa.gov&sz=128" alt="NASA">
-        NASA
-      </div>
-
-      <div class="org">
-        <img src="https://www.google.com/s2/favicons?domain=philips.com&sz=128" alt="Philips">
-        PHILIPS
-      </div>
-
-      <div class="org">
-        <img src="https://www.google.com/s2/favicons?domain=education.govt.nz&sz=128" alt="Ministry of Education">
-        MINISTRY OF EDUCATION
-      </div>
-
-      <div class="org">
-        <img src="https://www.google.com/s2/favicons?domain=universiteitleiden.nl&sz=128" alt="Leiden University">
-        LEIDEN UNIVERSITY
-      </div>
-
-      <div class="org">
-        <img src="https://www.google.com/s2/favicons?domain=qwilr.com&sz=128" alt="Qwilr">
-        QWILR
-      </div>
-
-    </div>
-
-    <div class="marquee-group" aria-hidden="true">
-
-      <div class="org">
-        <img src="https://www.google.com/s2/favicons?domain=nasa.gov&sz=128" alt="">
-        NASA
-      </div>
-
-      <div class="org">
-        <img src="https://www.google.com/s2/favicons?domain=philips.com&sz=128" alt="">
-        PHILIPS
-      </div>
-
-      <div class="org">
-        <img src="https://www.google.com/s2/favicons?domain=education.govt.nz&sz=128" alt="">
-        MINISTRY OF EDUCATION
-      </div>
-
-      <div class="org">
-        <img src="https://www.google.com/s2/favicons?domain=universiteitleiden.nl&sz=128" alt="">
-        LEIDEN UNIVERSITY
-      </div>
-
-      <div class="org">
-        <img src="https://www.google.com/s2/favicons?domain=qwilr.com&sz=128" alt="">
-        QWILR
-      </div>
-
-      <div class="org">
-        <img src="https://www.google.com/s2/favicons?domain=kit.edu&sz=128" alt="">
-        KIT
-      </div>
-
-    </div>
-
-  </div>
+<div class="marquee-group">
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=nasa.gov&sz=128" alt="NASA"><span>NASA</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=philips.com&sz=128" alt="PHILIPS"><span>PHILIPS</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=education.govt.nz&sz=128" alt="MINISTRY OF EDUCATION"><span>MINISTRY OF EDUCATION</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=universiteitleiden.nl&sz=128" alt="LEIDEN UNIVERSITY"><span>LEIDEN UNIVERSITY</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=qwilr.com&sz=128" alt="QWILR"><span>QWILR</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=kit.edu&sz=128" alt="KIT"><span>KIT</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=dhs.gov&sz=128" alt="DEPARTMENT OF HOMELAND SECURITY"><span>DEPARTMENT OF HOMELAND SECURITY</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=csb.gov&sz=128" alt="U.S. CHEMICAL SAFETY BOARD"><span>U.S. CHEMICAL SAFETY BOARD</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=fcc.gov&sz=128" alt="FEDERAL COMMUNICATIONS COMMISSION"><span>FEDERAL COMMUNICATIONS COMMISSION</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=fdic.gov&sz=128" alt="FEDERAL DEPOSIT INSURANCE CORPORATION"><span>FEDERAL DEPOSIT INSURANCE CORPORATION</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=dol.gov&sz=128" alt="DEPARTMENT OF LABOR"><span>DEPARTMENT OF LABOR</span></div>
+</div>
+<div class="marquee-group" aria-hidden="true">
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=nasa.gov&sz=128" alt=""><span>NASA</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=philips.com&sz=128" alt=""><span>PHILIPS</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=education.govt.nz&sz=128" alt=""><span>MINISTRY OF EDUCATION</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=universiteitleiden.nl&sz=128" alt=""><span>LEIDEN UNIVERSITY</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=qwilr.com&sz=128" alt=""><span>QWILR</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=kit.edu&sz=128" alt=""><span>KIT</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=dhs.gov&sz=128" alt=""><span>DEPARTMENT OF HOMELAND SECURITY</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=csb.gov&sz=128" alt=""><span>U.S. CHEMICAL SAFETY BOARD</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=fcc.gov&sz=128" alt=""><span>FEDERAL COMMUNICATIONS COMMISSION</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=fdic.gov&sz=128" alt=""><span>FEDERAL DEPOSIT INSURANCE CORPORATION</span></div>
+  <div class="org"><img src="https://www.google.com/s2/favicons?domain=dol.gov&sz=128" alt=""><span>DEPARTMENT OF LABOR</span></div>
+</div>
+</div>
 
 </div>
 
@@ -816,23 +815,6 @@ footer span {
 
 <!-- ACHIEVEMENT DOCUMENTS: keep your PDF/image files in the "documents" folder.
      Update document and verification values in the achievements array below. -->
-<!-- TECHNICAL EXPERTISE -->
-
-<section class="research" id="research">
-
-  <div class="section-label">// 03. TECHNICAL EXPERTISE</div>
-
-  <h2>SECURITY <span>RESEARCH</span></h2>
-
-  <div class="skills">
-
-    <div class="skill">Ethical Hacking</div>
-    <div class="skill">VAPT</div>
-
-  </div>
-
-</section>
-
 <!-- CONTACT -->
 
 <section class="contact" id="contact">
