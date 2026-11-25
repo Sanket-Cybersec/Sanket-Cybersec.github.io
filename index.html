@@ -201,8 +201,8 @@ h2 span {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 8% 48%, rgba(32,255,101,.10), transparent 32%),
-    linear-gradient(115deg, #030b06 0%, #06160b 55%, #020805 100%);
+    radial-gradient(circle at 8% 48%, rgba(32,255,101,.035), transparent 32%),
+    linear-gradient(115deg, #050907 0%, #070e09 55%, #030705 100%);
 }
 .about-layout {
   display: grid;
@@ -218,12 +218,12 @@ h2 span {
   max-width: 245px;
   aspect-ratio: 4 / 5;
   padding: 6px;
-  border: 1px solid rgba(32,255,101,.72);
+  border: 1px solid rgba(32,255,101,.38);
   border-radius: 23px;
-  background: linear-gradient(145deg, rgba(32,255,101,.20), rgba(5,20,10,.88));
-  box-shadow: 0 0 0 1px rgba(32,255,101,.08),
+  background: linear-gradient(145deg, rgba(20,38,26,.55), rgba(5,12,8,.94));
+  box-shadow: 0 0 0 1px rgba(32,255,101,.035),
               0 18px 42px rgba(0,0,0,.42),
-              0 0 30px rgba(32,255,101,.12);
+              0 0 18px rgba(32,255,101,.045);
   overflow: hidden;
 }
 .about-photo-frame::before {
@@ -267,10 +267,10 @@ h2 span {
   align-items: center;
   gap: 11px;
   padding: 12px 13px;
-  border: 1px solid rgba(32,255,101,.32);
+  border: 1px solid rgba(100,145,112,.22);
   border-radius: 10px;
-  background: linear-gradient(145deg, rgba(10,35,18,.92), rgba(3,15,8,.94));
-  box-shadow: inset 0 1px 0 rgba(220,255,229,.05);
+  background: linear-gradient(145deg, rgba(15,24,18,.96), rgba(7,12,9,.98));
+  box-shadow: inset 0 1px 0 rgba(220,255,229,.035);
 }
 .about-highlight-icon {
   flex: 0 0 30px;
@@ -280,7 +280,7 @@ h2 span {
   place-items: center;
   border-radius: 8px;
   color: var(--green);
-  background: rgba(32,255,101,.10);
+  background: rgba(32,255,101,.055);
   font-size: 17px;
 }
 .about-highlight strong {
@@ -310,8 +310,8 @@ h2 span {
 .about-focus span {
   padding: 7px 10px;
   color: #c6dfca;
-  background: rgba(10,28,16,.88);
-  border: 1px solid var(--border);
+  background: rgba(13,20,15,.92);
+  border: 1px solid rgba(100,145,112,.22);
   border-radius: 6px;
   font-size: 11px;
   transition: .2s ease;
@@ -1225,7 +1225,7 @@ footer span {
       <div class="about-highlights">
         <div class="about-highlight">
           <span class="about-highlight-icon" aria-hidden="true">♧</span>
-          <div><strong>2.8+ Years</strong><small>Cybersecurity Experience</small></div>
+          <div><strong id="experience-counter">Calculating...</strong><small>Cybersecurity Experience</small></div>
         </div>
         <div class="about-highlight">
           <span class="about-highlight-icon" aria-hidden="true">◎</span>
@@ -1584,6 +1584,48 @@ function renderAchievements() {
   }).join("");
 }
 renderAchievements();
+
+/* LIVE EXPERIENCE COUNTER
+   Start date: 5 May 2025.
+   The display updates automatically as calendar months pass. */
+(function updateExperienceCounter() {
+  const counter = document.getElementById("experience-counter");
+  if (!counter) return;
+
+  // Use local calendar dates to avoid timezone-related off-by-one errors.
+  const start = new Date(2025, 4, 5); // Month is zero-based: 4 = May
+  const now = new Date();
+
+  if (now < start) {
+    counter.textContent = "Starting soon";
+    return;
+  }
+
+  let years = now.getFullYear() - start.getFullYear();
+  let months = now.getMonth() - start.getMonth();
+
+  if (now.getDate() < start.getDate()) months -= 1;
+  if (months < 0) {
+    years -= 1;
+    months += 12;
+  }
+
+  const yearLabel = years === 1 ? "Year" : "Years";
+  const monthLabel = months === 1 ? "Month" : "Months";
+
+  if (years === 0) {
+    counter.textContent = `${months} ${monthLabel}`;
+  } else if (months === 0) {
+    counter.textContent = `${years} ${yearLabel}`;
+  } else {
+    counter.textContent = `${years} ${yearLabel} ${months} ${monthLabel}`;
+  }
+
+  counter.setAttribute(
+    "aria-label",
+    `${years} years and ${months} months of cybersecurity experience`
+  );
+})();
 
 /* CURRENT YEAR */
 
