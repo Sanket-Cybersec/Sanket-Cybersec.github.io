@@ -1149,6 +1149,13 @@ footer span {
   </div>
   <div class="org-card-name">KIT</div>
 </div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=nokia.com&sz=128"
+         alt="Nokia logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Nokia</div>
+</div>
 
       </div>
       <div class="org-slider-group" aria-hidden="true">
@@ -1193,6 +1200,13 @@ footer span {
          alt="KIT logo" loading="lazy">
   </div>
   <div class="org-card-name">KIT</div>
+</div>
+<div class="org-card">
+  <div class="org-logo-wrap">
+    <img src="https://www.google.com/s2/favicons?domain=nokia.com&sz=128"
+         alt="Nokia logo" loading="lazy">
+  </div>
+  <div class="org-card-name">Nokia</div>
 </div>
 
       </div>
@@ -1524,6 +1538,16 @@ const achievements = [
     ],
     verificationUrl: ""
   },
+  {
+    title: "Nokia",
+    category: "HALL OF FAME",
+    location: "GLOBAL RECOGNITION",
+    description: "Recognised in Nokia's Coordinated Vulnerability Disclosure (CVD) Hall of Fame for responsible vulnerability disclosure. Listed in October 2026.",
+    documents: [
+      { label: "View Nokia Hall of Fame listing", url: "https://www.nokia.com/we-are-nokia/security/products/cvd/hall-of-fame/" }
+    ],
+    verificationUrl: "https://www.nokia.com/we-are-nokia/security/products/cvd/hall-of-fame/"
+  },
 ];
 
 function renderAchievements() {
@@ -1536,7 +1560,8 @@ function renderAchievements() {
     "Ministry of Education": "education.govt.nz",
     "Leiden University": "universiteitleiden.nl",
     "Qwilr": "qwilr.com",
-    "KIT": "kit.edu"
+    "KIT": "kit.edu",
+    "Nokia": "nokia.com"
   };
 
   grid.innerHTML = achievements.map((item) => {
